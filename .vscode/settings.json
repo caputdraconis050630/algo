@@ -1,6 +1,8 @@
 {
-    "files.associations": {
-        "iostream": "cpp",
-        "__nullptr": "cpp"
-    }
+  "files.associations": {
+    "iostream": "cpp",
+    "__nullptr": "cpp",
+    "algorithm": "cpp",
+    "iosfwd": "cpp"
+  }
 }
