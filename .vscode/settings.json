@@ -3,6 +3,7 @@
     "iostream": "cpp",
     "__nullptr": "cpp",
     "algorithm": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "list": "cpp"
   }
 }
