@@ -46,7 +46,7 @@ int main()
         {
             if (pos == 0)
             {
-                cout << -1 << "\n";
+                cout << 1 << "\n";
             }
             else
             {
