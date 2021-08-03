@@ -25,10 +25,11 @@ int main()
     while (!L.empty())
     {
         cout << *iter;
-        if (iter == L.end())
+        if (*iter == L.back())
         {
-            iter = L.begin();
-            L.erase(L.end());
+            L.erase(iter);
+            iter = L.end();
+            --iter;
         }
         else
         {

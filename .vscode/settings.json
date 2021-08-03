@@ -4,6 +4,7 @@
     "__nullptr": "cpp",
     "algorithm": "cpp",
     "iosfwd": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "utility": "cpp"
   }
 }
