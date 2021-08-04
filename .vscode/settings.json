@@ -6,6 +6,7 @@
     "iosfwd": "cpp",
     "list": "cpp",
     "utility": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "string": "cpp"
   }
 }
