@@ -13,9 +13,11 @@ int main()
     deque<int> d;
 
     bool front_back = true; // 배열이 뒤집어진 상태인지 아닌지를 나타내는 변수 , true가 기본값
+    bool print_result = true;
 
     while (tc--)
     {
+        print_result = true;
         front_back = true;
         d.clear();
         cin >> op;
@@ -25,16 +27,23 @@ int main()
         cin >> arr;
         int len = arr.length();
         arr = arr.substr(1, len - 2);
-        cout << arr;
+        // cout << arr;
         // 구분자 쉼표 제거
-
+        if (n == 0)
+        {
+            cout << "error\n";
+            break;
+        }
         int current = arr.find(',');
         int start = 0;
 
         while (current != -1)
         {
             d.push_back(stoi(arr.substr(start, current - start)));
+            start = current + 1;
+            current = arr.find(',', start);
         }
+        d.push_back(stoi(arr.substr(start, current - start)));
 
         for (auto c : op)
         {
@@ -45,6 +54,12 @@ int main()
             }
             else
             { // 첫번째 숫자를 지우는 D operation
+                if (d.empty())
+                {
+                    cout << "error\n";
+                    print_result = false;
+                    break;
+                }
                 if (front_back)
                 {
                     d.pop_front();
@@ -55,10 +70,37 @@ int main()
                 }
             }
         }
-        cout << "hoit";
-        for (int i = 0; i < d.size(); i++)
+
+        // 결과 출력
+        // 뒤집어진 상태면 뒤부터 출력
+        if (print_result)
         {
-            cout << d[i] << "\n";
+            if (d.empty())
+            {
+                cout << "[]\n";
+                break;
+            }
+            else
+            {
+                cout << "[";
+                if (front_back)
+                {
+                    for (int i = 0; i < d.size() - 1; ++i)
+                    {
+                        cout << d[i] << ",";
+                    }
+                    cout << d.back() << "]\n";
+                }
+                else
+                {
+
+                    for (int i = d.size() - 1; i > 0; --i)
+                    {
+                        cout << d[i] << ",";
+                    }
+                    cout << d.front() << "]\n";
+                }
+            }
         }
     }
 }
