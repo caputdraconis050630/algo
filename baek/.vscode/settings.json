@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "stack": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "utility": "cpp"
   }
 }
