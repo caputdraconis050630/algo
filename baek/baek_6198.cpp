@@ -1,16 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+
+int n;
+stack<ll> s;
+
 int main()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    int N;
+    int i = 0;
+    ll sum = 0;
 
-    cin >> N;
-
-    for (int i = 0; i < N; i++)
+    cin >> n;
+    vector<ll> h(n);
+    for (i = 0; i < n; i++)
     {
+        cin >> h[i];
+        while (!s.empty() && s.top() <= h[i])
+            s.pop();
+        s.push(h[i]);
+        sum = sum + s.size() - 1;
     }
+    cout << sum << endl;
+    return 0;
 }

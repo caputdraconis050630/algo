@@ -41,8 +41,8 @@ int main()
     while (t--)
     {
         deque<int> d;
-        int rev = 0;
-        int n;
+        int rev = 0; // 뒤집어진 상태인지 아닌지 저장하는 bool 느낌의 변수
+        int n;       //
         bool isWrong = false;
         string query, tmp;
         cin >> query;
