@@ -13,9 +13,9 @@ int main()
 
     while (++title)
     {
-        s = to_string(title);
+        S = to_string(title);
 
-        if (s.find("666") != -1)
+        if (S.find("666") != -1)
         { // 찾았다!
             ++cnt;
         }
@@ -28,4 +28,4 @@ int main()
     }
 
     return 0;
-}
+}   
