@@ -5,6 +5,7 @@
     "utility": "cpp",
     "vector": "cpp",
     "ios": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "string": "cpp"
   }
 }
