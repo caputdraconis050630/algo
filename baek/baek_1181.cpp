@@ -28,13 +28,15 @@ int main()
     }
 
     // 중복값 제거
-    sort(dict.begin(), dict.end());
-    dict.erase(unique(dict.begin(), dict.end()), dict.end());
 
     sort(dict.begin(), dict.end(), comp);
-
-    for (auto c : dict)
+    string tmp;
+    for (int i = 0; i < N; i++)
     {
-        cout << c << "\n";
+        if (tmp == dict[i])
+            continue;
+
+        cout << dict[i] << "\n";
+        tmp = dict[i];
     }
 }
