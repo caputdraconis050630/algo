@@ -11,9 +11,13 @@ int main()
 
     vector<int> v(N);
 
+
+    // 벡터 초기화
     for (int i = 0; i < N; i++)
     {
         v.push_back(i + 1);
     }
     cout << "<";
+
+
 }
