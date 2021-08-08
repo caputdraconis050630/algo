@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int MX = 1000000 * 2 + 1;
+bool arr[MX];
+
 int main()
 {
     ios::sync_with_stdio(0);
@@ -8,19 +11,19 @@ int main()
 
     int N;
     cin >> N;
-    vector<int> v(N);
 
     for (int i = 0; i < N; i++)
     {
         int tmp;
         cin >> tmp;
-        v.push_back(tmp);
+        arr[tmp + 1000000] = true;
     }
 
-    sort(v.begin(), v.end());
-
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < MX; i++)
     {
-        cout << v[i] << "\n";
+        if (arr[i])
+        {
+            cout << i - 1000000 << "\n";
+        }
     }
 }

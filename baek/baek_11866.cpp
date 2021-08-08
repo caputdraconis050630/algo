@@ -9,15 +9,37 @@ int main()
     int N, K;
     cin >> N >> K;
 
-    vector<int> v(N);
-
+    queue<int> q;
 
     // 벡터 초기화
-    for (int i = 0; i < N; i++)
+    for (int i = 1; i <= N; i++)
     {
-        v.push_back(i + 1);
+        q.push(i);
     }
+
+    int count = 1;
     cout << "<";
-
-
+    while (!q.empty())
+    {
+        if (count % K == 0)
+        {
+            int ans = q.front();
+            q.pop();
+            if (q.empty())
+            {
+                cout << ans << ">";
+            }
+            else
+            {
+                cout << ans << ", ";
+            }
+        }
+        else
+        {
+            int num = q.front();
+            q.pop();
+            q.push(num);
+        }
+        count++;
+    }
 }
