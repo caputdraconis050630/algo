@@ -1,40 +1,52 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int MX = 10001;
+int K, N;
+int lan_cable[MX];
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
-    // 랜선의 개수 K, 필요한 랜선의 개수 N 입력
-    int K, N;
+    int max = 0;
+    int mid;
     cin >> K >> N;
 
-    // 기존 랜선의 길이 저장할 배열 선언
-    int lan_cable[K];
-
-    int sum = 0;
-    // 가지고 있는 K개의 랜선 길이 입력
     for (int i = 0; i < K; i++)
     {
         cin >> lan_cable[i];
-        sum += lan_cable[i];
+        if (max < lan_cable[i])
+            max = lan_cable[i];
     }
 
-    int max = sum / N;
+    int start = 1;
+    int end = max;
 
-    // 노가다 시작
-    while (max--)
+    int ans = 0;
+    while (start <= end)
     {
         int cnt = 0;
+        mid = (start + end) / 2;
         for (int i = 0; i < K; i++)
         {
-            cnt += lan_cable[i] / max;
+            cnt += lan_cable[i] / mid;
         }
-        if (cnt >= N)
+
+        if (cnt < N)
         {
-            cout << max << "\n";
-            return 0;
+            end = mid - 1;
+        }
+        else if (cnt == N)
+        {
+            ans = mid;
+            start = mid + 1;
+        }
+        else
+        {
+            // if(cnt > N)
+            start = mid + 1;
         }
     }
+    cout << ans << "\n";
 }
