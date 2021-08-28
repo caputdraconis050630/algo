@@ -19,6 +19,13 @@ int main()
 
     N--;
 
+
+/*
+
+N= 7 cnt=2
+
+
+*/
     while (true)
     {
         if (N > 6 * cnt)
