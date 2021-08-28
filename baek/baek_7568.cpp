@@ -12,7 +12,7 @@ int main()
 
     // 사람의 수
     int N;
-    scanf("%d", &N);
+    cin >> N;
 
     for (int i = 0; i < N; i++)
     {
