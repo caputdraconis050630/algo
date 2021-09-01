@@ -1,41 +1,49 @@
-// Unsolve
-
 #include <bits/stdc++.h>
+
 using namespace std;
+
+long long remain(vector<int> &vec, int val)
+{
+    long long sum = 0;
+
+    for (int i = 0; i < vec.size(); i++)
+        if (vec[i] > val)
+            sum += (vec[i] - val);
+    return sum;
+}
 
 int main()
 {
-    ios::sync_with_stdio(0);
+    ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    int N, M;
-    int max = 0;
-    cin >> N >> M;
+    long long n, m;
+    cin >> n >> m;
 
-    int len[N];
-    for (int i = 0; i < N; i++)
+    vector<int> woods(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> woods[i];
+
+    int left = 0, right = 1000000005;
+    int res = 0;
+    while (left <= right)
     {
-        cin >> len[i];
-        if (max < len[i])
-            max = len[i];
-    }
-    int tmp;
-    int sum = 0;
-    for (int i = max; i >= 0; i--)
-    {
-        sum = 0;
-        for (int j = 0; j < N; j++)
+        int middle = (left + right) / 2;
+
+        if (remain(woods, middle) >= m)
         {
-            tmp = len[j] - i;
-            if (tmp >= 0)
-            {
-                sum += tmp;
-            }
+            left = middle + 1;
+            res = max(res, middle);
         }
-        if (sum >= M)
+        else
         {
-            cout << i << "\n";
-            return 0;
+            right = middle - 1;
         }
     }
+    cout << res;
+
+    return 0;
 }
+
+
