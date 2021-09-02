@@ -8,6 +8,7 @@
     "istream": "cpp",
     "string": "cpp",
     "iostream": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "queue": "cpp"
   }
 }

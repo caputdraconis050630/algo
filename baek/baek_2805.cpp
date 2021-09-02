@@ -1,49 +1,55 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-long long remain(vector<int> &vec, int val)
+long long sum(vector<int> &v, int M)
 {
     long long sum = 0;
-
-    for (int i = 0; i < vec.size(); i++)
-        if (vec[i] > val)
-            sum += (vec[i] - val);
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v.at(i) >= M)
+        {
+            sum += v.at(i) - M;
+        }
+    }
     return sum;
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
+    ios::sync_with_stdio(0);
     cin.tie(0);
 
-    long long n, m;
-    cin >> n >> m;
+    int N, M;
+    int max = 0;
+    cin >> N >> M;
 
-    vector<int> woods(n);
+    vector<int> v(N);
 
-    for (int i = 0; i < n; i++)
-        cin >> woods[i];
-
-    int left = 0, right = 1000000005;
-    int res = 0;
-    while (left <= right)
+    for (int i = 0; i < N; i++)
     {
-        int middle = (left + right) / 2;
+        int tmp;
+        cin >> tmp;
+        v.push_back(tmp);
+    }
 
-        if (remain(woods, middle) >= m)
+    int start = 0, end = 1000000001;
+    while (start <= end)
+    {
+        int middle = (start + end) / 2;
+
+        if (sum(v, middle) >= M)
         {
-            left = middle + 1;
-            res = max(res, middle);
+            if (max <= middle)
+            {
+                max = middle;
+                start = middle + 1;
+            }
         }
         else
         {
-            right = middle - 1;
+            end = middle - 1;
         }
     }
-    cout << res;
 
-    return 0;
+    cout << max << "\n";
 }
-
-
