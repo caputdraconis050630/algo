@@ -27,6 +27,7 @@ int main()
             cin >> board[i][k];
         }
     }
+    
 
     for (int i = 0; i < n; i++)
     {
@@ -73,6 +74,5 @@ int main()
         }
     }
 
-    cout << cnt << "\n"
-         << mx;
+    cout << cnt << "\n"<< mx;
 }
