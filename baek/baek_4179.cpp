@@ -93,7 +93,7 @@ int main(void)
             if (board[nx][ny] == '#' || dist[nx][ny] >= 0)
                 continue;
             if (fire[nx][ny] != -1 && fire[nx][ny] <= dist[cur.X][cur.Y] + 1)
-                continue; // 방문하지 않은 곳은 -1이기 때문
+                continue; // 방문하지 않은 곳은 -1이기 때문/ 앞 조건은 벽 때문에 불이 도달하지 못하는 곳(-1이 저장된 부분)은 가능하도록 해준다.
 
             dist[nx][ny] = dist[cur.X][cur.Y] + 1;
             Q.push(make_pair(nx, ny));
