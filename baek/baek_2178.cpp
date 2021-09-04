@@ -5,7 +5,7 @@ using namespace std;
 #define Y second
 
 string board[102];
-int dist[102][102];
+int dist[102][102]; // 거리 저장할 변수
 
 int main()
 {
