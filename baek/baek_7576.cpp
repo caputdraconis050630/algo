@@ -33,7 +33,7 @@ int main(void)
 
             if (board[i][j] == 0)
             { // 익지 않은 토마토
-                dist[i][j] == -1;
+                dist[i][j] = -1;
             }
         }
     }
