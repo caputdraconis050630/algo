@@ -18,6 +18,6 @@ int main(void)
         d[i] = (d[i - 2] + d[i - 1]) % mod;
     }
 
-    cout << d[n] % 10007 << "\n";
+    cout << d[n] << "\n";
     return 0;
 }
