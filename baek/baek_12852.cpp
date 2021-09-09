@@ -13,7 +13,8 @@ int main(void)
     d[1] = 0;
     for (int i = 2; i <= n; i++)
     {
-        d[i] = d[i - 1] + 1;
+
+        d[i] = d[i - 1] + 1; // 이걸 이용하면 O(N)에 채울 수 있음
         pre[i] = i - 1;
 
         if (i % 2 == 0 && d[i] > d[i / 2] + 1)
