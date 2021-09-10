@@ -29,6 +29,7 @@ int main()
 
     sort(two.begin(), two.end());
 
+    // 맨 뒤와 맨 앞에서부터 도는 이유 => 가장 큰 d를 찾기 위해서
     for (int i = n - 1; i > 0; i--)
     {
         for (int j = 0; j < i; j++)
