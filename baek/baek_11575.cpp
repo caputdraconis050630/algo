@@ -10,23 +10,24 @@ int main(void)
     cin.tie(0);
 
     cin >> T; // 테스트 케이스
-
-    string str;
+    queue<char> ans;
 
     while (T--)
     {
-        queue<char> ans;
+        string str;
         cin >> a >> b;
         cin >> str;
 
         for (int i = 0; i < str.length(); i++)
         {
-            int tmp = (int)(str[i]) - 65;
+            int tmp = str[i] - 'A';
+
             int answer = (a * tmp + b) % 26;
-            ans.push((char)(answer));
+            // cout << char(answer + 'A') << "\n";
+            ans.push((char)(answer + 'A'));
         }
 
-        for (int i = 0; i < ans.size(); i++)
+        while (!ans.empty())
         {
             cout << ans.front();
             ans.pop();
