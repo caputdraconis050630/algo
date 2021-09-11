@@ -3,7 +3,7 @@ using namespace std;
 
 typedef long long ll;
 int k, n;
-int arr[10005];
+ll arr[10005];
 
 bool solve(ll x)
 {
@@ -24,12 +24,12 @@ int main()
         cin >> arr[i];
 
     ll st = 1;
-    ll en = 0x7fffffff;
+    ll en = 0x7fffffff; // 최대 길이
 
     while (st < en)
     {
         ll mid = (st + en + 1) / 2;
-        if (solve(mid))
+        if (solve(mid)) // 지금의 mid값으로 나눴을 때 적정량을 넘나 비교
             st = mid;
         else
             en = mid - 1;
