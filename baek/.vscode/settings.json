@@ -9,6 +9,7 @@
     "string": "cpp",
     "iostream": "cpp",
     "deque": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "algorithm": "cpp"
   }
 }
