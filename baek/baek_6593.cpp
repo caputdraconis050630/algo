@@ -1,12 +1,10 @@
-#include <iostream>
-#include <cstring>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct building
+typedef struct building
 {
     int x, y, z;
-};
+}building;
 
 int L, R, C;
 int sx, sy, sz, ex, ey, ez;
@@ -19,7 +17,8 @@ const int dz[] = {0, 0, 0, 0, -1, 1};
 void bfs()
 {
     queue<building> q;
-    q.push({sx, sy, sz});
+    building _building = {sx, sy, sz};
+    q.push(_building);
     while (!q.empty())
     {
         int x = q.front().x, y = q.front().y, z = q.front().z;
@@ -37,7 +36,9 @@ void bfs()
             if (dist[nx][ny][nz] || a[nx][ny][nz] == '#')
                 continue;
             dist[nx][ny][nz] = dist[x][y][z] + 1;
-            q.push({nx, ny, nz});
+
+            building tmp = {nx, ny, nz};
+            q.push(tmp);
         }
     }
     printf("Trapped!\n");
@@ -48,6 +49,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+
     while (true)
     {
         cin >> L >> R >> C;
