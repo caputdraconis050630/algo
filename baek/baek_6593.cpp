@@ -4,12 +4,13 @@ using namespace std;
 typedef struct building
 {
     int x, y, z;
-}building;
+} building;
 
 int L, R, C;
 int sx, sy, sz, ex, ey, ez;
-char a[30][30][30];
-int dist[30][30][30];
+char a[35][35][35];
+int dist[35][35][35];
+
 const int dx[] = {-1, 1, 0, 0, 0, 0};
 const int dy[] = {0, 0, -1, 1, 0, 0};
 const int dz[] = {0, 0, 0, 0, -1, 1};
