@@ -7,7 +7,7 @@ typedef struct building
 } building;
 
 int L, R, C;
-int sx, sy, sz, ex, ey, ez;
+int sx, sy, sz, ex, ey, ez; // start point(starts with s), ending point(starts with e)
 char a[35][35][35];
 int dist[35][35][35];
 
