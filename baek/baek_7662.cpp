@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-int T, k;
 
-deque<int> v;
+int T; // Test Case
+int k;
 
 int main(void){
     ios::sync_with_stdio(0);
@@ -11,43 +10,42 @@ int main(void){
     cout.tie(NULL);
 
     cin>>T;
+    
+    
 
     while(T--){
         cin>>k;
-        v.clear();
+        multiset<int> ms;
 
-        while(k--){
+        for(int i=0;i<k;i++){
             char cmd;
-            int tar;
-            cin>>cmd>>tar;
+            int target;
+            cin>>cmd>>target;
 
             if(cmd == 'I'){
-                v.push_back(tar);
+                ms.insert(target);
             }
             else{
                 // cmd == 'D'
-                if(!v.empty()){
-                    if(tar == 1){
-                        // 최댓값 삭제
-                        sort(v.begin(), v.end());
-                        v.pop_back();
-                    }
-                    else{
-                        // 최솟값 삭제
-                        sort(v.begin(), v.end());
-                        v.pop_front();
-                    }
+                if(!ms.empty() && target == -1){
+                    ms.erase(ms.begin());
+                }
+                else if(!ms.empty() && target == 1){
+                    auto iter = ms.end();
+                    iter--;
+                    ms.erase(iter);
                 }
             }
-
         }
-        if(v.empty()){
+
+        if(ms.empty()){
             cout<<"EMPTY\n";
         }
         else{
-            // v is not empty
-            sort(v.begin(), v.end());
-            cout<<v.back()<<" "<<v.front()<<"\n";
+            auto end_iter = ms.end();
+            end_iter--;
+            cout<<*end_iter<<' '<<*ms.begin()<<'\n';
         }
     }
+
 }
