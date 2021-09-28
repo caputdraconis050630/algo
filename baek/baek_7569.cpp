@@ -23,8 +23,6 @@ int main(void)
 
     cin >> M >> N >> H;
 
-    fill(&days[0][0][0], &days[0][0][0] + (int)pow(102, 3), -1);
-
     for (int i = 0; i < H; i++)
     {
         for (int j = 0; j < N; j++)
@@ -41,6 +39,7 @@ int main(void)
                         riped
                     
                 */
+                days[i][j][k] = -1;
 
                 if (board[i][j][k] == 1)
                 {
@@ -48,7 +47,7 @@ int main(void)
                     tmp.x = i;
                     tmp.y = j;
                     tmp.z = k;
-                    days[tmp.x][tmp.y][tmp.z] = 0;
+                    days[i][j][k] = 0;
                     Q.push(tmp);
                 }
                 else if (board[i][j][k] == 0)
@@ -78,25 +77,25 @@ int main(void)
             nxt.z = cur.z + dz[dir];
 
             // 범위 필터링
-            if (nxt.x >= 0 && nxt.x < H && nxt.y >= 0 && nxt.y < N && nxt.z >= 0 && nxt.z < M)
+            if (nxt.x < 0 || nxt.x >= H || nxt.y < 0 || nxt.y >= N || nxt.z < 0 || nxt.z >= M)
             {
                 continue;
             }
 
-            if (days[nxt.x][nxt.y][nxt.y] != -1)
+            if (days[nxt.x][nxt.y][nxt.z] != -1)
             {
                 // 이미 방문한 적이 있다면 continue
                 continue;
             }
 
-            if (board[nxt.x][nxt.y][nxt.y] != 0)
+            if (board[nxt.x][nxt.y][nxt.z] != 0)
             {
                 // 그 칸이 이미 익은 토마토이거나, 토마토가 존재하지 않을 때 continue
                 continue;
             }
 
-            days[nxt.x][nxt.y][nxt.y] = days[cur.x][cur.y][cur.z] + 1;
-            board[nxt.x][nxt.y][nxt.y] = 1;
+            days[nxt.x][nxt.y][nxt.z] = days[cur.x][cur.y][cur.z] + 1;
+            board[nxt.x][nxt.y][nxt.z] = 1;
             Q.push(nxt);
         }
     }
