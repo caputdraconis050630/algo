@@ -2,56 +2,41 @@
 using namespace std;
 
 int N, M;
-string S, tar;
-int len;
-
-void set_tar()
-{
-    tar = "I";
-    for (int i = 0; i < N; i++)
-    {
-        tar += "OI";
-    }
-}
+string S;
 
 int main(void)
 {
     ios::sync_with_stdio(0);
     cin.tie(NULL);
 
-    int cnt = 0;
-    bool flag;
-
     cin >> N >> M;
+
     cin >> S;
 
-    set_tar(); // Get Pn String
-               /* test set_tar func
-    cout << tar << "\n";
-    */
-
-    len = 2 * N + 1;
-
+    int ans = 0;
     for (int i = 0; i < M; i++)
     {
-        flag = true;
-        if (i + len - 1 >= M)
-            break;
-        for (int j = i; j < i + len; j++)
+        int k = 0; // k는 IOI의 길이. IOI면 1 , IOIOI면 2
+        // O가 나오면 pass
+        if (S[i] == 'O')
+            continue;
+        // s[i] == 'I'일 때
+        else
         {
-            if (S[j] != tar[j - i])
+            while (S[i + 1] == 'O' && S[i + 2] == 'I')
             {
-                flag = false;
-                break;
+                k++;
+                if (k == N)
+                {
+                    k--; // 중복 카운트를 막기 위해 -1 해준다.
+                    ans++;
+                }
+                i += 2; // O를 건너 뛴다.
             }
-        }
-
-        if (flag)
-        {
-            cnt++;
+            k = 0;
         }
     }
+    cout << ans;
 
-    // output the result
-    cout << cnt << "\n";
+    return 0;
 }
