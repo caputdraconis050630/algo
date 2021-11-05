@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+// 생략 가능(gcc)
 #define and &&
 #define or ||
 

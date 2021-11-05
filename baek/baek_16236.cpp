@@ -5,6 +5,7 @@ using namespace std;
 
 int N;
 int size = 2; // 아기 상어의 기본 사이즈 2
+int eat = 0; // 현재 사이즈에서 먹은 마리수
 int board[21][21];
 int visit[21][21];
 
@@ -56,9 +57,14 @@ int main(void)
                 // 아기 상어의 사이즈보다 클 경우 continue
                 continue;
             }
+
+            
         }
     }
 
+
+
+    // 결과 출력
     int MX = 0;
     for (int i = 0; i < N; i++)
     {

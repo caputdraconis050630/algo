@@ -7,4 +7,4 @@ def solution(s):
     return s
 
 
-print(solution("2three45sixseven"))
+

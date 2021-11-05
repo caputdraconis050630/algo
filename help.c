@@ -1,15 +1,72 @@
 #include <stdio.h>
 
-int main(void)
+#define num 9
+
+int main()
 {
-    char code1;
-    char code2;
+    int data[num] = {8, 6, 3, 7, 2, 5, 4, 1, 0};
+    int temp1 = 0;
+    int temp2 = 0;
 
-    printf("두 개의 문자 입력 : ");
-    scanf("%c %c", &code1, &code2);
+    // Data Print
+    printf("데이터 : ");
+    for (int i = 0; i < num; i++)
+    {
+        printf("%d ", data[i]);
+    }
+    printf("\n\n");
 
-    printf("첫 번째 문자 코드값 : %d\n", code1);
-    printf("두 번째 문자 코드값 : %d\n", code2);
+    // Bubble Sort
+    for (int i = 0; i < num - 1; i++)
+    {
+        for (int j = 0; j < num - 1 - i; j++)
+        {
+            if (data[j] > data[j + 1])
+            {
+                temp1 = data[j];
+                data[j] = data[j + 1];
+                data[j + 1] = temp1;
 
+                for (int t = 0; t < num; t++)
+                    printf("%d ", data[t]);
+                printf("\n");
+            }
+        }
+    }
+    printf("\n");
+    // Bubble Sort result
+    printf("\n버블 정렬을 사용하여 오름차순한 결과 : ");
+    for (int i = 0; i < num; i++)
+        printf("%d ", data[i]);
+    printf("\n\n");
+    // Selection Sort
+    int Max;
+    for (int i = 0; i < num - 1; i++)
+    {
+        Max = i;
+        for (int j = i + 1; j < num; j++)
+        {
+            if (data[j] > data[Max])
+            {
+                Max = j;
+            }
+        }
+        temp2 = data[Max];
+        data[Max] = data[i];
+        data[i] = temp2;
+
+        if (Max != i)
+        {
+            for (int t = 0; t < num; t++)
+                printf("%d ", data[t]);
+            printf("\n");
+        }
+    }
+    printf("\n\n");
+    // Selection Sort
+    printf("\n선택 정렬을 사용하여 오름차순한 결과 : ");
+    for (int i = 0; i < num; i++)
+        printf("%d ", data[i]);
+    printf("\n\n");
     return 0;
 }
