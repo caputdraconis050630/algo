@@ -40,7 +40,7 @@ void getStack(string s)
         }
         else
         {
-            stk.push(s.at(i) - '0');
+            stk.push(int(s.at(i) - '0'));
         }
     }
 }
@@ -51,9 +51,11 @@ int solution(string s)
 
     getStack(s);
 
-    for (int i = 0; i < stk.size(); i++)
+    int size = stk.size();
+    for (int k = 0; k < size; k++)
     {
-        answer += stk.top() * pow(10, i);
+        int tmp = stk.top();
+        answer += tmp * pow(double(10), double(k));
         stk.pop();
     }
 
