@@ -4,6 +4,8 @@ int main()
 {
     int N, M, K;
 
+    cin>>N>>M>>K;
+
     int ao = M;
     int ax = N - M;
 
