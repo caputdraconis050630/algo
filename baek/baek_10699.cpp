@@ -1,25 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+char *timeToString(struct tm *t);
 int main(void)
 {
-    ios::sync_with_stdio(0);
-    cin.tie(NULL);
-
-    time_t timer;
     struct tm *t;
+    time_t timer;
     timer = time(NULL);
     t = localtime(&timer);
-
-    cout << t->tm_year + 1900 << "-";
-    if (t->tm_mon + 1 < 10)
-    {
-        cout << "0" << t->tm_mon + 1;
-    }
-    else
-    {
-        cout << t->tm_mon + 1;
-    }
-    cout << "-";
-    cout << t->tm_mday << "\n";
+    printf("%s\n", timeToString(t));
+    return 0;
+}
+char *timeToString(struct tm *t)
+{
+    static char s[20];
+    sprintf(s, "%04d-%02d-%02d", t->tm_year + 1900, t->tm_mon + 1, t->tm_mday);
+    return s;
 }
