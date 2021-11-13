@@ -11,6 +11,7 @@
     "deque": "cpp",
     "queue": "cpp",
     "algorithm": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "ostream": "cpp"
   }
 }
