@@ -1,17 +1,1 @@
-{
-  "files.associations": {
-    "stack": "cpp",
-    "iosfwd": "cpp",
-    "utility": "cpp",
-    "vector": "cpp",
-    "ios": "cpp",
-    "istream": "cpp",
-    "string": "cpp",
-    "iostream": "cpp",
-    "deque": "cpp",
-    "queue": "cpp",
-    "algorithm": "cpp",
-    "map": "cpp",
-    "ostream": "cpp"
-  }
-}
+{}
