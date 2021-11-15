@@ -1,51 +1,43 @@
 #include <bits/stdc++.h>
+
 #define X first
 #define Y second
 
-typedef pair<int, int> Pair;
+
+
 using namespace std;
 
 int N, M;
-int board[10][10];
+int virus_map[10][10];
+vector<pair<int, int> > V;
+queue<pair<int, int> > Q;
 
-int virus_board[10][10]; // 바이러스가 퍼지는걸 확인할 보드
-int dist[10][10];        // 바이러스 확산에 걸리는 시간
+int ans = 0;
 
 int dx[] = {-1, 0, 1, 0};
 int dy[] = {0, -1, 0, 1};
 
-int main(void)
+void spreadVirus()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(NULL);
+    int copyMap[10][10];
 
-    vector<Pair> V;
-    queue<Pair> Q;
-
-    fill(&dist[0][0], &dist[9][10], -1);
-
-    cin >> N >> M;
-
+    // 기둥 세개를 채운 맵을 복사
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < M; j++)
         {
-            cin >> board[i][j];
-            virus_board[i][j] = board[i][j];
-
-            if (board[i][j] == 2)
-            {
-                V.push_back(make_pair(i, j));
-                Q.push(make_pair(i, j));
-
-                dist[i][j] = 0;
-            }
+            copyMap[i][j] = virus_map[i][j];
         }
+    }
+
+    for (int i = 0; i < V.size(); i++)
+    {
+        Q.push(V.at(i));
     }
 
     while (!Q.empty())
     {
-        Pair cur = Q.front();
+        pair<int, int> cur = Q.front();
         Q.pop();
 
         for (int dir = 0; dir < 4; dir++)
@@ -55,29 +47,71 @@ int main(void)
 
             if (nx < 0 or ny < 0 or nx >= N or ny >= M)
                 continue;
-            if (dist[nx][ny] != -1 and dist[nx][ny] <= dist[cur.X][cur.Y] + 1)
-                continue;
-            if (virus_board[nx][ny] != 0)
-                continue;
+            if(copyMap[nx][ny] != 0) continue;
 
-            dist[nx][ny] = dist[cur.X][cur.Y] + 1;
-            virus_board[nx][ny] = 2;
+            copyMap[nx][ny] = 2;
             Q.push(make_pair(nx, ny));
         }
     }
+    int cntSafeZone=0;
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            if(copyMap[i][j] == 0){
+                cntSafeZone++;
+            }
+        }
+    }
 
-    int ans = 0;
+    ans = max(ans, cntSafeZone);
+}
+
+void setPillar(int x, int cnt)
+{
+    if (cnt == 3)
+    {
+        // 기둥 3개를 다 세웠을 때
+        spreadVirus();
+        return;
+    }
+
+    for (int i = x; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            if (virus_map[i][j] == 0)
+            {
+                virus_map[i][j] = 1; // 기둥 세우기
+                setPillar(i, cnt + 1);
+
+                // 원상복구
+                virus_map[i][j] = 0;
+            }
+        }
+    }
+}
+
+int main(void)
+{
+    ios::sync_with_stdio(0);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    cin >> N >> M;
 
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < M; j++)
         {
-            if (board[i][j] == 0)
+            cin >> virus_map[i][j];
+
+            if (virus_map[i][j] == 2)
             {
-                ans++;
+                V.push_back(make_pair(i, j));
             }
         }
     }
 
-    cout << ans << "\n";
+    setPillar(0, 0);
+
+    cout<<ans<<"\n";
 }
