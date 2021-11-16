@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+
+#define Price first
+#define Weight second
 using namespace std;
 
 int main(void)
@@ -16,7 +19,7 @@ int main(void)
     for (int i = 0; i < N; i++)
     {
         pair<int, int> tmp;
-        cin >> tmp.second >> tmp.first;
+        cin >> tmp.Weight >> tmp.Price;
 
         jew[i] = tmp;
     }
@@ -37,11 +40,11 @@ int main(void)
     {
         pair<int, int> cur = jew[i];
 
-        auto it = bag.lower_bound(cur.second);
+        auto it = bag.lower_bound(cur.Weight);
 
         if (it == bag.end())
             continue;
-        ans += cur.first;
+        ans += cur.Price;
 
         bag.erase(it);
     }
