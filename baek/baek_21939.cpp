@@ -18,7 +18,7 @@ int main(void)
     {
         cin >> P >> L; // 문제 번호 | 난이도
 
-        hard.insert(make_pair(L, P));
+        hard.insert({L, P});
         Map[P] = L;
     }
 
@@ -51,7 +51,7 @@ int main(void)
         {
             cin >> arg1 >> arg2; // 문제 번호 | 난이도
 
-            hard.insert(make_pair(arg2, arg1));
+            hard.insert({arg2, arg1});
             Map[arg1] = arg2;
         }
         else
@@ -60,7 +60,7 @@ int main(void)
 
             int lev = Map[arg1];
 
-            auto it = hard.find(make_pair(lev, arg1));
+            auto it = hard.find({lev, arg1});
 
             hard.erase(it);
         }
