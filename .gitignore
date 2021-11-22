@@ -1,4 +1,4 @@
 ## Build Ignore File ##
 *.dSYM
-
+/.DS_Store
 /baek/programmers/
