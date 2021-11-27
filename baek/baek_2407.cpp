@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <algorithm> // reverse 함수
+#include <bits/stdc++.h>
 
 using namespace std;
 
