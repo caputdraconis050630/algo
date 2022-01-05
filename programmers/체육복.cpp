@@ -40,12 +40,10 @@ int solution(int n, vector<int> lost, vector<int> reserve)
             if (arr[lost.at(i) - 1])
             {
                 arr[lost.at(i) - 1] = false;
-                answer++;
             }
             else if (arr[lost.at(i) + 1])
             {
                 arr[lost.at(i) + 1] = false;
-                answer++;
             }
             else
             {
