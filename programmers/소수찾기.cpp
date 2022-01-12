@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <map>
 using namespace std;
 
 string tar = "";
@@ -75,9 +77,4 @@ int solution(string numbers)
     }
 
     return answer;
-}
-
-int main(void)
-{
-    cout << solution("011");
 }

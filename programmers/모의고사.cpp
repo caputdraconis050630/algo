@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 vector<int> student_1 = {1, 2, 3, 4, 5};
@@ -39,7 +41,7 @@ vector<int> solution(vector<int> answers)
         cnt++;
     }
 
-    if (ansCnt[0] >= ansCnt[1] && ansCnt[0] >= ansCNt[2])
+    if (ansCnt[0] >= ansCnt[1] && ansCnt[0] >= ansCnt[2])
     {
         answer.push_back(1);
 
@@ -52,7 +54,7 @@ vector<int> solution(vector<int> answers)
             answer.push_back(3);
         }
     }
-    else if (ansCnt[1] >= ansCnt[0] && ansCnt[1] >= ansCNt[2])
+    else if (ansCnt[1] >= ansCnt[0] && ansCnt[1] >= ansCnt[2])
     {
         answer.push_back(2);
 
@@ -65,7 +67,7 @@ vector<int> solution(vector<int> answers)
             answer.push_back(3);
         }
     }
-    else if (ansCnt[2] >= ansCnt[0] && ansCnt[2] >= ansCNt[1])
+    else if (ansCnt[2] >= ansCnt[0] && ansCnt[2] >= ansCnt[1])
     {
         answer.push_back(3);
 

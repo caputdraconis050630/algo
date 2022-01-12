@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 vector<int> solution(vector<int> progresses, vector<int> speeds)
@@ -16,13 +18,17 @@ vector<int> solution(vector<int> progresses, vector<int> speeds)
         {
             int cnt = 0;
             bool flag = true;
-            while (true)
+            while (flag)
             {
                 progresses.erase(progresses.begin());
                 speeds.erase(speeds.begin());
                 cnt++;
 
-                if (!progresses.empty() && progresses.at(0) < 100)
+                if (progresses.empty())
+                {
+                    flag = false;
+                }
+                else if (progresses.at(0) < 100)
                 {
                     flag = false;
                 }
