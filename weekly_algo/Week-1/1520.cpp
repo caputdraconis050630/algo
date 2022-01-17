@@ -1,68 +1,34 @@
-#include <iostream>
-#include <queue>
+// Solved
 
-#define X first
-#define Y second
-
+#include<iostream>
+#include<algorithm>
+#include<memory.h>
 using namespace std;
-
-int M, N, ans = 0;
-int board[501][501];
-int dx[4] = {-1, 0, 1, 0};
-int dy[4] = {0, -1, 0, 1};
-
-int main(void)
-{
-    ios::sync_with_stdio(0);
-    cin.tie(NULL);
-
-    cin >> M >> N;
-
-    for (int i = 0; i < M; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            cin >> board[i][j];
-        }
+int n, m;
+int input[501][501], dp[501][501];
+int dx[4] = { 1, 0, -1, 0 }, dy[4] = { 0, 1, 0, -1 };
+ 
+int dfs(int row, int col){
+    if (dp[row][col] != -1) return dp[row][col]; //값이 이미 있는 경우
+    if (row < 0 || row >= n || col < 0 || col >= m) return 0; // 없는 좌표
+    if (row == 0 && col == 0) return 1; // 기저 사례
+ 
+    dp[row][col] = 0;
+    for (int i = 0; i < 4; i++){ // 4 way search
+        int nextX = row + dx[i], nextY = col + dy[i];
+        if (input[nextX][nextY] > input[row][col])
+            dp[row][col] += dfs(nextX, nextY);
     }
-
-    queue<pair<int, int> > Q;
-
-    // Set starting point
-    Q.push(make_pair(0, 0));
-
-    while (!Q.empty())
-    {
-        pair<int, int> cur = Q.front();
-        Q.pop();
-
-        if (cur.X == M - 1 && cur.Y == N - 1)
-        {
-            ans++;
-        }
-        else
-        {
-            for (int dir = 0; dir < 4; dir++)
-            {
-                int nx = cur.X + dx[dir];
-                int ny = cur.Y + dy[dir];
-
-                // Filtering OOB
-                if (nx < 0 || nx >= M || ny < 0 || ny >= N)
-                {
-                    continue;
-                }
-
-                // Filtering unavailable height
-                if (board[nx][ny] >= board[cur.X][cur.Y])
-                {
-                    continue;
-                }
-
-                Q.push(make_pair(nx, ny));
-            }
-        }
-    }
-
-    cout << ans << "\n";
+    return dp[row][col];
 }
+ 
+int main(){
+    cin >> n >> m;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            scanf("%d", &input[i][j]);
+ 
+    memset(dp, -1, sizeof(dp));
+    printf("%d", dfs(n - 1, m - 1));
+    return 0;
+} 
