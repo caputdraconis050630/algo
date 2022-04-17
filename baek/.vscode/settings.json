@@ -1,11 +1,12 @@
 {
   "files.associations": {
-    "algorithm": "cpp",
-    "utility": "cpp",
-    "map": "cpp",
-    "queue": "cpp",
-    "vector": "cpp",
-    "iterator": "cpp",
-    "type_traits": "cpp"
-  }
+	"algorithm": "cpp",
+	"utility": "cpp",
+	"map": "cpp",
+	"queue": "cpp",
+	"vector": "cpp",
+	"iterator": "cpp",
+	"type_traits": "cpp",
+	"iostream": "cpp"
+}
 }
