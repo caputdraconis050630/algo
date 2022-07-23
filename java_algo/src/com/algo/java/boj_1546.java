@@ -1,2 +1,4 @@
-package com.algo.java;public class boj_1546 {
+package com.algo.java;
+
+public class boj_1546 {
 }
