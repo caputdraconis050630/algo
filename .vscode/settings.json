@@ -1,11 +1,13 @@
 {
-    "files.associations": {
-        "string": "cpp",
-        "stdlib.h": "c",
-        "iostream": "cpp",
-        "vector": "cpp",
-        "ios": "cpp",
-        "deque": "cpp",
-        "utility": "cpp"
-    }
+  "files.associations": {
+    "string": "cpp",
+    "stdlib.h": "c",
+    "iostream": "cpp",
+    "vector": "cpp",
+    "ios": "cpp",
+    "deque": "cpp",
+    "utility": "cpp",
+    "queue": "cpp",
+    "ostream": "cpp"
+  }
 }
