@@ -1,16 +1,42 @@
-#include <iostream>
-
+#include "bits/stdc++.h"
 using namespace std;
 
-int N;
-int M;
-int 
-
+int n, m, f[101][101], check[101][101];
+ 
 int main(void)
 {
-	cin >> N >> M;
-	for (int i = 0;i < M; i++)
-	{
-		cin >> M
-	}		
+	cin >> n >> m;
+    int a, b;
+    for (int i = 0; i < m; i++){
+        cin >> a >> b;
+        f[a][b] = f[b][a] = 1;
+    }
+ 
+    int min = 987654321, ans = 0;
+    queue<int> q;
+    for (int i = 1; i < n + 1; i++){
+        q.push(i);
+        check[i][i] = true;
+ 
+        int temp = 0;
+        while (!q.empty()){
+            int now = q.front();
+            q.pop();
+ 
+            for (int j = 1; j < n + 1; j++){
+                if (!check[i][j] && f[now][j] == 1){
+                    q.push(j);
+                    f[i][j] = f[i][now] + f[now][j];
+                    check[i][j] = true;
+                    temp += f[i][j];
+                }
+            }
+        }
+ 
+        if (temp < min){
+            min = temp;
+            ans = i;
+        }
+    }
+    cout << ans << "\n";	
 }
