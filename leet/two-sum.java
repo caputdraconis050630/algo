@@ -1,16 +1,20 @@
 package leet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 		int n = nums.length;
 		int[] answer = new int[2];
-        for (int i =0; i<n-1; i++) {
-			for (int j=i+1; j<n; j++) {
-				if (nums[i] + nums[j] == target) {
-					answer[0] = i;
-					answer[1] = j;
-				}
+		Map<Integer, Integer> map = new HashMap<>();
+        for (int i =0; i<n; i++) {
+			if (map.containsKey(target - nums[i])) {
+				answer[0] = map.get(target - nums[i]);
+				answer[1] = i;
+				break;
 			}
+			map.put(nums[i], i);
 		}
 		return answer;
     }
